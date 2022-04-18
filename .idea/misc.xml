@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1905" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/chevron_right.xml" value="0.294" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/ic_a1t1y_i7ovr.xml" value="0.222" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1905" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/launch_screen.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/trending_down.xml" value="0.294" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/trending_up.xml" value="0.294" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_display_message.xml" value="0.22" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_main.xml" value="0.2598958333333333" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_welcome.xml" value="0.33" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_date.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_portfolio.xml" value="0.5" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_stock.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_title.xml" value="0.75" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/null_header.xml" value="0.17447916666666666" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/section_ex1_header.xml" value="0.22" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1525" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1905" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://schemas.android.com/apk/res-auto" location="$PROJECT_DIR$" />
+    <resource url="http://schemas.android.com/apk/res/android" location="$PROJECT_DIR$" />
+    <resource url="http://schemas.android.com/tools" location="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

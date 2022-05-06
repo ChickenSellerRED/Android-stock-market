@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="1dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:clickable="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/news_render"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="16dp"
+            android:text="render"
+            android:textStyle="bold"
+            android:textColor="@color/news_card_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/news_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/news_render"
+            android:text="time"
+            android:textColor="@color/news_card_time"
+            app:layout_constraintBottom_toBottomOf="@+id/news_render"
+            app:layout_constraintStart_toEndOf="@+id/news_render"
+            app:layout_constraintTop_toTopOf="@+id/news_render"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/news_headline"
+            android:layout_width="244dp"
+            android:layout_height="73dp"
+            android:layout_alignStart="@+id/news_render"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="42dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/news_render"
+            app:layout_constraintTop_toBottomOf="@+id/news_render" />
+
+        <com.example.myfirstapp.adapters.RoundRectCornerImageView
+            android:id="@+id/news_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignBottom="@+id/news_headline"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/news_headline"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/star_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/news_headline"
+            app:layout_constraintStart_toEndOf="@+id/news_headline"
+            tools:srcCompat="@tools:sample/avatars" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

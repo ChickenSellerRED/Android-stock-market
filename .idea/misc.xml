@@ -4,21 +4,67 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1905" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/background_white.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/buy_sell_button.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/cellborder.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/cellborder_title.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/cellborder_value.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/chart_line.xml" value="0.222" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/chevron_right.xml" value="0.294" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/clock_time_three.xml" value="0.222" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/cong_done_button.xml" value="0.1155" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/custom_dialog_1_bac.xml" value="0.105" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/custom_dialog_2_bac.xml" value="0.1155" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/custom_dialog_3_bac.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/delete.xml" value="0.1" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/ic_a1t1y_i7ovr.xml" value="0.222" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/ic_icons8_facebook.xml" value="0.1" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1905" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/launch_screen.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/magnify.xml" value="0.3185" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/news_0_bac.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/news_0_img.xml" value="0.1555" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/news_dialog_bac.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/round_coner.xml" value="0.1155" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/star.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/star_outline.xml" value="0.1" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/trending_down.xml" value="0.294" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/drawable/trending_up.xml" value="0.294" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_detail_stock.xml" value="0.1188118811881188" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_display_message.xml" value="0.22" />
-        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_main.xml" value="0.2598958333333333" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_spinner_main.xml" value="0.25" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/activity_welcome.xml" value="0.33" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/auto_complete_item.xml" value="0.75" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/customdialog_1.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/customdialog_2.xml" value="0.25" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/customdialog_3.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_about.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_chartone.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_headline.xml" value="0.75" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_insights.xml" value="0.22" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_news_0.xml" value="0.6342780026990553" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_news_1.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_news_test.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_portfolio.xml" value="0.1" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_stats.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/detail_vbp.xml" value="0.36614583333333334" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/dialog_trade.xml" value="0.22" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/finn_hub_info.xml" value="0.275" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/fragment_real_time_stock.xml" value="0.36614583333333334" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/fragment_v_b_p_stock.xml" value="0.1875" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/fragment_vbp_stock.xml" value="0.1" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_date.xml" value="0.67" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_portfolio.xml" value="0.5" />
-        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_stock.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_portfolio_list.xml" value="0.16197916666666667" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_stock.xml" value="0.33" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_stock_list.xml" value="0.21145833333333333" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/item_title.xml" value="0.75" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/null_header.xml" value="0.17447916666666666" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/search.xml" value="0.19074074074074074" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/layout/section_ex1_header.xml" value="0.22" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/menu/detail_stock_menu.xml" value="0.67" />
+        <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/menu/menu_with_searchbar.xml" value="0.33" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1525" />
         <entry key="..\:/ChickSellerRED/CSCI571hw9/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1905" />
       </map>

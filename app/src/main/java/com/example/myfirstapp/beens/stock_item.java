@@ -17,4 +17,6 @@ public class stock_item {
     public String date;
     public Double real_time_value;
     public Double current_money;
+
+    public Double avg_cost;
 }

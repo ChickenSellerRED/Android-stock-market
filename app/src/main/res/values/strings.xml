@@ -4,4 +4,7 @@
     <string name="button_send">Send</string>
     <string name="app_label">Stocks</string>
     <string name="search_hint"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hyperlink"><a href="https://learntodroid.com">LearnToDroid.com</a></string>
 </resources>

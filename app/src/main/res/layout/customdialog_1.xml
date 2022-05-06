@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/dialog_trade_title"
+        android:layout_width="434dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dialog_trade_number"
+        android:layout_width="224dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:textCursorDrawable="@color/trade_dialog_cyan"
+        app:backgroundTint="@color/trade_dialog_cyan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_trade_title" />
+
+    <Button
+        android:id="@+id/dialog_trade_buy"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/round_coner"
+        android:text="BUY"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_trade_sell"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_trade_moneytobuy" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="89dp"
+        android:layout_height="29dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="shares"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_trade_number"
+        app:layout_constraintStart_toEndOf="@+id/dialog_trade_number" />
+
+    <TextView
+        android:id="@+id/dialog_trade_totalformula"
+        android:layout_width="340dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:gravity="right"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/dialog_trade_moneytobuy"
+        android:layout_width="248dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="12dp"
+        android:text=""
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_trade_totalformula" />
+
+    <Button
+        android:id="@+id/dialog_trade_sell"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/round_coner"
+        android:text="SELL"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_trade_buy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dialog_trade_buy"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

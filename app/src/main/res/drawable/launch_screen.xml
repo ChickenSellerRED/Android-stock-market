@@ -8,13 +8,11 @@
 
     <!-- Your product logo - 144dp color version of your app icon -->
     <item>
-
         <bitmap
             android:layout_width="144dp"
             android:layout_height="144dp"
             android:src="@drawable/ic_app_playstore"
             android:gravity="center"/>
-
     </item>
 
 </layer-list>

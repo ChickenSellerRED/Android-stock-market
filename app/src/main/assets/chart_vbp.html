@@ -9,18 +9,24 @@
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
     <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        #container {
-            height: 500px;
-            min-width: 310px;
-        }
+    #container {
+      height: 500px;
+      min-width: 310px;
+    }
 
-    </style>
+  </style>
 </head>
 <body>
 <div id="container"></div>
 <script type="text/javascript">
- stockOptions : Highcharts.Options = {
+  function getticker() {
+    s = Android.getTicker();
+    return s;
+  }
+
+  stockOptions = {
 
     rangeSelector: {
       enabled: true,
@@ -87,6 +93,19 @@
       offset: 0,
       lineWidth: 2
     }],
+    //
+    // tooltip: {
+    //   split: true
+    // },
+
+    // plotOptions: {
+    //   series: {
+    //     dataGrouping: {
+    //       units: this.groupingUnits
+    //     }
+    //   }
+    // },
+
     series: [{
       type: 'candlestick',
       name: '',
@@ -121,138 +140,47 @@
     }]
   }
 
-  function getticker() {
-    // s = Android.getTicker();
-    s = "TSLA"
-    document.getElementById("ticker").innerHTML = s;
-  }
+  var date = new Date();
+  ticker = getticker();
+  now_time = date.getTime();
+  const server_prefix = "https://stock-search-8-3.wm.r.appspot.com/";
 
-  Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-ohlcv.json', function (data) {
+  t_end = Math.round(now_time/1000);
+  t_start = t_end - 2*365*24*60*60;
 
-    // split the data set into ohlc and volume
-    var ohlc = [],
-        volume = [],
-        dataLength = data.length,
-        // set the allowed units for data grouping
-        groupingUnits = [[
-            'week',                         // unit name
-            [1]                             // allowed multiples
-        ], [
-            'month',
-            [1, 2, 3, 4, 6]
-        ]],
-
-        i = 0;
-
-    for (i; i < dataLength; i += 1) {
-        ohlc.push([
-            data[i][0], // the date
-            data[i][1], // open
-            data[i][2], // high
-            data[i][3], // low
-            data[i][4] // close
-        ]);
-
-        volume.push([
-            data[i][0], // the date
-            data[i][5] // the volume
-        ]);
+  ohlc = [];
+  volume = [];
+  $.getJSON(server_prefix+ "/get_4p2",{'ticker':ticker,'from':t_start,'to':t_end,'resolution':'D'},(result)=>{
+    // 获取2年四维数据
+    console.log(t_start,t_end);
+    console.log('chart',result)
+    for(var i=0;i<result.c.length;i++){
+      ohlc.push([result['t'][i]*1000,
+        result['o'][i],
+        result['h'][i],
+        result['l'][i],
+        result['c'][i],
+      ]);
+      volume.push([result['t'][i]*1000,
+        result['v'][i]
+      ]);
     }
+    (Object)(stockOptions).title.text = ticker + ' Historical';
+    (Object)(stockOptions).series[0].name = ticker;
+    (Object)(stockOptions).series[0].data = ohlc;
+    (Object)(stockOptions).series[1].data = volume;
 
 
-    // create the chart
-    Highcharts.stockChart('container', {
+    Highcharts.stockChart('container', stockOptions);
+    // chart.reflow();
+  })
 
-        rangeSelector: {
-            selected: 2
-        },
+    // console.log('kaishi',t_start)
+    // console.log ('jieshu',t_end)
+    // console.log('ok')
+    // get_2year_data(t_start,t_end,ticker,'D');
+    // console.log('ok2')
 
-        title: {
-            text: 'AAPL Historical'
-        },
-
-        subtitle: {
-            text: 'With SMA and Volume by Price technical indicators'
-        },
-
-        yAxis: [{
-            startOnTick: false,
-            endOnTick: false,
-            labels: {
-                align: 'right',
-                x: -3
-            },
-            title: {
-                text: 'OHLC'
-            },
-            height: '60%',
-            lineWidth: 2,
-            resize: {
-                enabled: true
-            }
-        }, {
-            labels: {
-                align: 'right',
-                x: -3
-            },
-            title: {
-                text: 'Volume'
-            },
-            top: '65%',
-            height: '35%',
-            offset: 0,
-            lineWidth: 2
-        }],
-
-        tooltip: {
-            split: true
-        },
-
-        plotOptions: {
-            series: {
-                dataGrouping: {
-                    units: groupingUnits
-                }
-            }
-        },
-
-        series: [{
-            type: 'candlestick',
-            name: 'AAPL',
-            id: 'aapl',
-            zIndex: 2,
-            data: ohlc
-        }, {
-            type: 'column',
-            name: 'Volume',
-            id: 'volume',
-            data: volume,
-            yAxis: 1
-        }, {
-            type: 'vbp',
-            linkedTo: 'aapl',
-            params: {
-                volumeSeriesID: 'volume'
-            },
-            dataLabels: {
-                enabled: false
-            },
-            zoneLines: {
-                enabled: false
-            }
-        }, {
-            type: 'sma',
-            linkedTo: 'aapl',
-            zIndex: 1,
-            marker: {
-                enabled: false
-            }
-        }]
-    });
-});
 
 </script>
-
-
 </body>
-</html>

@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myfirstapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyFirstApp">
+        android:theme="@style/Theme.MyFirstApp"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Spinner_main"
+            android:exported="false" />
+        <activity
+            android:name=".Spinner_detail"
+            android:exported="false" />
+        <activity
+            android:name=".DetailStockActivity"
+            android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="false" >
-
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".DisplayMessageActivity"
             android:exported="false">
@@ -23,24 +42,34 @@
         </activity>
         <activity
             android:name=".MainActivity2"
-            android:exported="false" />
+            android:exported="true"></activity>
+        <activity
+            android:name=".ActionBarSearchActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchableActivity" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchableActivity" />
         </activity>
         <activity
             android:name=".SearchableActivity"
-            android:launchMode="singleTop"
-            android:exported="false">
+            android:exported="false"
+            android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
     </application>
 

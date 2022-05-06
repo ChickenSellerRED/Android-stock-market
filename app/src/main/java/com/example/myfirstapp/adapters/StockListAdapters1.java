@@ -13,7 +13,7 @@ import com.example.myfirstapp.beens.stock_item;
 
 import java.util.List;
 
-public class StockListAdapters extends RecyclerView.Adapter {
+public class StockListAdapters1 extends RecyclerView.Adapter {
 
     private final List<stock_item> stockdata;
     public static final int TYPE_DATE = 0;
@@ -22,7 +22,7 @@ public class StockListAdapters extends RecyclerView.Adapter {
     public static final int TYPE_PORTFOLIO = 3;
 
     //set data
-    public StockListAdapters(List<stock_item> data) {
+    public StockListAdapters1(List<stock_item> data) {
         this.stockdata = data;
     }
 

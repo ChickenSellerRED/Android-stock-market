@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+    #container {
+      height: 500px;
+      min-width: 310px;
+    }
+
+  </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+  function getticker() {
+    s = Android.getTicker();
+    return s;
+  }
+
+  epsOptions = {
+    tooltip:{
+      shared:true
+    },
+    title:{
+      text:''
+    },
+    chart: {
+      type: 'spline',
+    },
+    xAxis: {
+      categories: []
+    },
+    series: [{
+      name: 'Actual',
+      data: [],
+      marker: {
+        fillColor: '#7CB5EC',
+        lineWidth: 1,
+        lineColor: '#1924FB',
+        radius:4,
+        symbol:'circle'
+      }
+    },
+      {
+        name: 'Estimate',
+        data: [],
+        marker: {
+          fillColor: '#424248',
+          lineWidth: 1,
+          lineColor: '#0E0ED5', // inherit from series
+          radius:4,
+          symbol:'diamond'
+        }
+      }],
+    yAxis: {
+      title: {
+        text: 'Quarterly EPS'
+      },
+    }
+  }
+
+  ticker = getticker();
+  const server_prefix = "https://stock-search-8-3.wm.r.appspot.com/";
+  $.getJSON(server_prefix + "/get_4p9",{'ticker':ticker},(result)=> {
+    this.tb9 = result;
+    // console.log('4p9:', result);
+    this.epsOptions.title.text = "Historical EPS Surprises";
+    this.epsOptions.series[0].data   = [];
+    this.epsOptions.series[1].data   = [];
+    this.epsOptions.xAxis.categories = [];
+    for(var i=0;i<this.tb9.length;i++){
+      this.epsOptions.series[0].data.push(this.tb9[i].actual);
+      this.epsOptions.series[1].data.push(this.tb9[i].estimate);
+      this.epsOptions.xAxis.categories.push(this.tb9[i].period + '<br>Surprise: ' + this.tb9[i].surprise)
+
+    }
+    Highcharts.chart('container',epsOptions);
+  })
+
+
+</script>
+</body>
+</html>

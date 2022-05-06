@@ -23,6 +23,7 @@ public class SearchableActivity extends AppCompatActivity {
         }
     }
 
+    //do search logic
     private void doMySearch(String query) {
         TextView view = findViewById(R.id.search_text);
         view.setText(query);

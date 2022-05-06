@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/news_dialog_bac"
+    android:layout_gravity="center">
+
+
+    <TextView
+        android:id="@+id/news_render"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:text="Yahoo"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/news_dialogtime"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#c0c0c0"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/news_render"
+        app:layout_constraintTop_toBottomOf="@+id/news_render" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="320dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="28dp"
+        android:background="#c0c0c0"
+        app:layout_constraintStart_toStartOf="@+id/news_render"
+        app:layout_constraintTop_toBottomOf="@+id/news_dialogtime" />
+
+    <TextView
+        android:id="@+id/news_headline"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/news_dialogtime"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/news_content"
+        android:maxLines = "10"
+        android:minLines="1"
+        android:fontFamily=""
+        android:textSize="15dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/news_headline"
+        app:layout_constraintTop_toBottomOf="@+id/news_headline" />
+
+    <ImageView
+        android:id="@+id/news_chrome"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:src="@drawable/ic_icons8_chrome"
+
+        app:layout_constraintBottom_toBottomOf="@+id/news_twitter"
+        app:layout_constraintEnd_toStartOf="@+id/news_twitter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/news_twitter"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/news_twitter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:src="@drawable/ic_icons8_twitter_circled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/news_facebook"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:src="@drawable/ic_icons8_facebook"
+        app:layout_constraintBottom_toBottomOf="@+id/news_twitter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/news_twitter"
+        app:layout_constraintTop_toTopOf="@+id/news_twitter"
+        tools:srcCompat="@tools:sample/avatars" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

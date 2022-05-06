@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.webAppInterfaces.VBPWebAppInterface;
 
+import static com.example.myfirstapp.MainActivity.editor;
+import static com.example.myfirstapp.MainActivity.sharedPreferences;
 
 public class RealTimeStock extends Fragment {
     private final String ticker;
@@ -31,9 +34,12 @@ public class RealTimeStock extends Fragment {
         WebView webView = view.findViewById(R.id.chartone_realtime);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        VBPWebAppInterface vbpWebAppInterface = new VBPWebAppInterface(context,"TSLA");
+        VBPWebAppInterface vbpWebAppInterface = new VBPWebAppInterface(context,ticker);
         webView.addJavascriptInterface(vbpWebAppInterface,"Android");
-        webView.loadUrl("file:///android_asset/sample.html");
+        webView.loadUrl("file:///android_asset/chart_realtime.html");
+        editor.putBoolean("detail_page_over",true);
+        editor.putBoolean("chart_1",true);
+        editor.apply();
         return view;
     }
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+    #container {
+      height: 500px;
+      min-width: 310px;
+    }
+
+  </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+  function getticker() {
+    s = Android.getTicker();
+    return s;
+  }
+
+  recommendationOptions = {
+    chart:{
+      type:'column'
+    },
+    title:{
+      text:'Recommendation Trends'
+    },
+    xAxis: {
+      categories:[]//wait update
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: '#Analysis'
+      }
+    },
+    plotOptions: {
+      column: {
+        dataLabels: {
+          enabled: true
+        }
+      },
+      series: {
+        stacking: "normal"
+      }
+    },
+    series:[]
+  }
+
+  ticker = getticker();
+  const server_prefix = "https://stock-search-8-3.wm.r.appspot.com/";
+  $.getJSON(server_prefix + "/get_4p6",{'ticker':ticker},(result)=> {
+    tb6 = result;
+    // console.log('4p6',result);
+    var xA = [];
+    for(var i=0;i<tb6.length;i++)
+      xA.push((tb6[i].period).substring(0,7))
+    console.log('xA',xA)
+    recommendationOptions.xAxis.categories = xA;
+    var item_name = ['Strong Buy','Buy','Hold','Sell','Strong Sell'];
+    var varable_name = ['strongBuy','buy','hold','sell','strongSell'];
+    var temp = [];
+    recommendationOptions.series = [];
+    var color = ['#176F37','#1DB954','#B98B1D','#F45B5B','#813131']
+    for(var i=0;i<5;i++){
+      var json ={
+        'name':'',
+        data:temp,
+        color:color[i]
+      };
+      json.data=[];
+      json.name=item_name[i];
+      for(var j=0;j<tb6.length;j++){
+        if(i==0)json.data.push(tb6[j].strongBuy);
+        if(i==1)json.data.push(tb6[j].buy);
+        if(i==2)json.data.push(tb6[j].hold);
+        if(i==3)json.data.push(tb6[j].sell);
+        if(i==4)json.data.push(tb6[j].strongSell);
+      }
+      recommendationOptions.series.push(json);
+    }
+    Highcharts.chart('container', recommendationOptions);
+  });
+
+
+</script>
+</body>
+</html>

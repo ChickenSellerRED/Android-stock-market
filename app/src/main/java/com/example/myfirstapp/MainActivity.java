@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -94,11 +96,14 @@ public class MainActivity extends AppCompatActivity {
     PortHSection portHSection;
     DateSection dateSection;
 
+    @TargetApi(11)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onresume_flag = 1;
         setContentView(R.layout.activity_main);
+
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 
         sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -174,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
     void startRepeatingTask() {
         handler.postDelayed(mStatusChecker, 15000);
-//        mStatusChecker.run();
     }
 
     void stopRepeatingTask() {
@@ -183,42 +187,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void initPortfolio() throws JSONException {
 ////      测试部分
-//        editor.putFloat("net_worth",0);
-//        editor.putFloat("money",25000);
-//        String[] tem = {"TSLA","AAPL"};
-////        System.out.println("init port:");
-////        System.out.println(StringArray2String(tem));
-////        String[] temp = String2StringArray(StringArray2String(tem));
-////        for(int i=0;i<temp.length;i++)
-////            System.out.print(temp[i]+", ");
-//        editor.putString("p_ticker_names",StringArray2String(tem));
-//        for(int i=0;i<tem.length;i++){
-//            //shares
-//            editor.putInt("p_"+tem[i]+"_s",1+i);
-//            //avg price
-//            editor.putFloat("p_"+tem[i]+"_a",(float)30.1);
-//            //total price
-//            editor.putFloat("p_"+tem[i]+"_t",(float) 30.1*(i+1));
-//        }
-//        editor.apply();
 
-
-//        editor.clear();
-//        editor.apply();
-//        if(sharedPreferences.getFloat("net_worth",-1) == -1)
-//            editor.putFloat("net_worth",25000);
-//        if(sharedPreferences.getFloat("money",-1) == -1)
-//            editor.putFloat("money",25000);
-//        editor.apply();
+        editor.clear();
+        editor.apply();
+        if(sharedPreferences.getFloat("net_worth",-1) == -1)
+            editor.putFloat("net_worth",25000);
+        if(sharedPreferences.getFloat("money",-1) == -1)
+            editor.putFloat("money",25000);
+        editor.apply();
         portList = String2StringArray(sharedPreferences.getString("p_ticker_names",""));
     }
     public static String []favList;
     public static String []portList;
     public void initFavorites() throws JSONException{
-
-//        String[] tem = {"TSLA","AAPL"};
-//        editor.putString("f_ticker_names",StringArray2String(tem));
-//        editor.apply();
         favList = String2StringArray(sharedPreferences.getString("f_ticker_names",""));
     }
 
@@ -255,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
         stock_item title = new stock_item();
         title.title="PORTFOLIO";
         stock_item porth = new stock_item();
-//        porth.real_time_value = (double)sharedPreferences.getFloat("net_worth",0);
         porth.real_time_value = (double)sharedPreferences.getFloat("money",0);
         porth.current_money = (double)sharedPreferences.getFloat("money",0);
         List<stock_item> porth_list = new ArrayList<>();
@@ -266,13 +246,10 @@ public class MainActivity extends AppCompatActivity {
         //                钱包里的股票
         ArrayList<stock_item> portb_list= new ArrayList<>();
         String[] ports = String2StringArray(sharedPreferences.getString("p_ticker_names",""));
-//                double[] priceList = getPortPriceList(ports);
-//                System.out.println("pricelist:"+ priceList.length);
         ports_cnt = 0;
         if(ports.length == 0){
             portSection = new PortBSection(MainActivity.super.getApplicationContext(),null,portb_list);
             sectionAdapter.addSection(portSection);
-//            portHSection.list.get(0).real_time_value = portHSection.list.get(0).current_money;
             setFavStocks();
         }
         else
@@ -297,7 +274,6 @@ public class MainActivity extends AppCompatActivity {
                                     System.out.println("closed price: " + result.get("c"));
                                     double closed_price = (Double)result.get("c");
                                     System.out.println("response: " + response);
-//                                    System.out.println("closed price: " + closed_price);
                                     portb_item.closed_price = closed_price * shares;
                                     portb_item.change = (closed_price - avg_cost) * shares;
                                     portb_item.change_rate = (portb_item.change / total_cost)*shares;
@@ -682,6 +658,7 @@ public class MainActivity extends AppCompatActivity {
         });
         if(favSection.list.size() > 0 )
             favSection.list.clear();
+
         if(favList.length == 0){
 //            //更新钱包里的股票
 //            updatePortStocks();
@@ -951,10 +928,9 @@ public class MainActivity extends AppCompatActivity {
         return b;
     }
     //获取现在时间戳
-    public static final long getNowUnix(){
+    public static long getNowUnix(){
 
-        long nowTime = Instant.now().getEpochSecond();
-        return nowTime;
+        return Instant.now().getEpochSecond();
     }
 
     public void get_autocomplete( int delay,int tem, String cur_ticker){

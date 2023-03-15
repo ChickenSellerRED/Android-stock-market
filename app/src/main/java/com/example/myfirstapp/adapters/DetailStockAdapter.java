@@ -1,23 +1,24 @@
 package com.example.myfirstapp.adapters;
 
-import static android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 import static com.example.myfirstapp.MainActivity.SEARCHED_TICKER;
 import static com.example.myfirstapp.MainActivity.String2StringArray;
 import static com.example.myfirstapp.MainActivity.StringArray2String;
 import static com.example.myfirstapp.MainActivity.df;
 import static com.example.myfirstapp.MainActivity.editor;
 import static com.example.myfirstapp.MainActivity.getNowUnix;
-import static com.example.myfirstapp.MainActivity.month_list;
 import static com.example.myfirstapp.MainActivity.removeString;
 import static com.example.myfirstapp.MainActivity.sharedPreferences;
 
+import androidx.annotation.NonNull;
+import com.bumptech.glide.RequestBuilder;
+
 import android.app.Dialog;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.text.Editable;
 import android.text.Html;
@@ -26,7 +27,6 @@ import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -35,28 +35,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.BinderThread;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.myfirstapp.DetailStockActivity;
-import com.example.myfirstapp.MainActivity;
+//import com.example.myfirstapp.GlideApp;
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.svg4glide.GlideApp;
+import com.example.myfirstapp.svg4glide.SvgSoftwareLayerSetter;
 import com.example.myfirstapp.beens.detail_about;
 import com.example.myfirstapp.beens.detail_chartone;
 import com.example.myfirstapp.beens.detail_insights;
@@ -70,25 +61,17 @@ import com.example.myfirstapp.beens.detail_headline;
 import com.example.myfirstapp.beens.detail_stock_item;
 import com.example.myfirstapp.webAppInterfaces.VBPWebAppInterface;
 import com.google.android.material.tabs.TabLayout;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Request;
 
 
-import org.w3c.dom.Text;
-
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class DetailStockAdapter extends RecyclerView.Adapter {
 
-    private Context context;
-    private Integer news_cnt = 0;
+    final private Context context;
+    final private Integer news_cnt = 0;
     final private List<detail_stock_item> items;
     public static final int TYPE_HEADLINE = 0;
     public static final int TYPE_CHARTONE = 1;
@@ -264,12 +247,40 @@ class DetailHeadlineHolder extends RecyclerView.ViewHolder{
         }
 
 
-//        Picasso.get().load(item1.logo_url).into(detail_item_logo);
-        Glide.with(context).load(item1.logo_url).into(detail_item_logo);
+//        Picasso.get().load(@dra).into(detail_item_logo);
+//        try{
+//            URL url = new URL(item1.logo_url);
+//            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+//            InputStream inputStream = urlConnection.getInputStream();
+//            SVG svg = SVGParser. getSVGFromInputStream(inputStream);
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+
+
+        RequestBuilder<PictureDrawable> requestBuilder;
+        requestBuilder =
+                GlideApp.with(context)
+                        .as(PictureDrawable.class)
+                        .transition(withCrossFade())
+                        .listener(new SvgSoftwareLayerSetter());
+
+        Uri uri = Uri.parse(item1.logo_url);
+        requestBuilder.load(uri)
+
+                .into(detail_item_logo);
+//        try{
+//            GlideApp.with(context)
+//                    .load(item1.logo_url)
+//                    .into(detail_item_logo);
+//        }catch (Exception e){
+//            System.out.println("error "+e);
+//        }
+
+        System.out.println("load avatar");
         System.out.println("logo : " + item1.logo_url);
     }
 }
-
 class DetailChartoneHolder extends RecyclerView.ViewHolder{
 
     final private Context context;
@@ -297,7 +308,6 @@ class DetailChartoneHolder extends RecyclerView.ViewHolder{
         tabLayout.getTabAt(1).setIcon(R.drawable.clock_time_three);
     }
 }
-
 class DetailPortfolioHolder extends RecyclerView.ViewHolder implements TradeDialog.TradeDialogListener {
     final private Context context;
     final private TextView detail_item_sharesowned;
@@ -609,7 +619,6 @@ class DetailPortfolioHolder extends RecyclerView.ViewHolder implements TradeDial
 
     }
 }
-
 class DetailStatsHolder extends RecyclerView.ViewHolder{
    final private Context context;
    final private TextView detail_stats_openprice;
@@ -790,6 +799,8 @@ class DetailNewsHolder extends RecyclerView.ViewHolder{
         this.news_headline.setText(item1.headline);
 //        Picasso.get().load(item1.image_url).into(this.news_image);
         Glide.with(context).load(item1.image_url).into(this.news_image);
+        System.out.println("image_url:"+item1.image_url);
+//        Glide.with(context).load("https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/AAPL.svg").into(this.news_image);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -799,7 +810,7 @@ class DetailNewsHolder extends RecyclerView.ViewHolder{
         });
     }
     public void openNewsDialog(detail_news item){
-        Dialog dialog = new Dialog(context);
+        Dialog dialog = new Dialog(context); 
         dialog.setContentView(R.layout.customdialog_3);
 
 
@@ -819,7 +830,7 @@ class DetailNewsHolder extends RecyclerView.ViewHolder{
 
         //设定宽高
         int width = (int)(context.getResources().getDisplayMetrics().widthPixels*0.93);
-        int height = (int)(context.getResources().getDisplayMetrics().heightPixels*0.50);
+        int height = (int)(context.getResources().getDisplayMetrics().heightPixels*0.60);
         dialog.getWindow().setLayout(width, height);
 //        dialog.getWindow()
 
@@ -859,3 +870,4 @@ class DetailNewsHolder extends RecyclerView.ViewHolder{
     }
 
 }
+

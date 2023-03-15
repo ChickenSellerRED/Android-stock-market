@@ -238,8 +238,6 @@ public class DetailStockActivity extends AppCompatActivity {
 
         detailStockAdapter = new DetailStockAdapter(this,detail_item_list);
         detail_page_view.setAdapter(detailStockAdapter);
-//        detail_page_view.getRecycledViewPool().setMaxRecycledViews(1, 0);
-//        detail_page_view.getRecycledViewPool().setMaxRecycledViews(5, 0);
         detail_page_view.setItemViewCacheSize(30);
         detail_page_view.setAdapter(detailStockAdapter);
     }
